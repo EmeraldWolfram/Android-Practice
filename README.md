@@ -24,3 +24,15 @@ Practices:
   - Put all the setter into the view holder class but not the getter unless it require input from user.
   - This is because what we need to display could be information that was processed from the raw data.
   - If we do not separate into object class and view holder class, the programmer will tend to store more field in the object class and use up more memory space during the run time.
+  
+2. Model View Presenter Architecture
+----
+- First, separate an activity into 4 interfaces.
+  - MvpView: Passive View layer API for the Presenter to call 
+  - MvpVPresenter: Activity flows API for the interaction of user called from View. (Look at this to understand the program)
+  - MvpMPresenter: API provided for model to call for updating View and notify methods.
+  - MvpModel: Business logic of the program for Presenter to call;
+- Button pressed method should be included in MvpView interface.
+- Provide API that consume Exception and show it to the user to remove crashing.
+- Methods in MvpModel can always throw Exception and MvpMPresenter should always catch the Exception and show it in View.
+- Provide API that suite your programming style in the MvpModel interface.
